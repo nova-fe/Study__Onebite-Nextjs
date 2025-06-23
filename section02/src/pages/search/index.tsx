@@ -1,13 +1,16 @@
-import { useRouter } from "next/router";
 import { ReactNode } from "react";
 import SearchableLayout from "../../components/searchable-layout";
+import books from "@/mock/books.json";
+import BookItem from "../../components/book-item";
 
 export default function Page() {
-  const router = useRouter();
-  // /search?q=Nova 로 접속한 경우
-  const { q } = router.query;
-  console.log(q); // Nova
-  return <h1>{q}</h1>;
+  return (
+    <div>
+      {books.map((book) => (
+        <BookItem key={book.id} {...book} />
+      ))}
+    </div>
+  );
 }
 
 Page.getLayout = (page: ReactNode) => {
