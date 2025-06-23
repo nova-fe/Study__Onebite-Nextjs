@@ -22,6 +22,7 @@ export const getStaticProps = async () => {
       allBooks,
       recoBooks,
     },
+    revalidate: 3, // 단위: 초 => 3초 주기로 재검증
   };
 };
 
