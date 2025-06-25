@@ -2,6 +2,13 @@ import BookItem from "@/components/book-item";
 import style from "./page.module.css";
 import { BookData } from "../../types";
 
+// 특정 페이지의 유형을 강제로 Static, Dynamic 페이지로 설정
+// 1. auto: 기본값, 아무것도 강제하지 않음
+// 2. force-dynamic: 페이지를 강제로 Dynamic 페이지로 설정
+// 3. force-static: 페이지를 강제로 Static 페이지로 설정
+// 4. error: 페이지를 강제로 Static 페이지로 설정, 설정하면 안 되는 이유를 빌드 오류로 발생시킴
+// export const dynamic = "";
+
 async function AllBooks() {
   // { cache: "no-store" } : 기본값(캐싱을 하지 않음)
   // { cache: "force-cache" } : 무조건 캐싱, 한번 호출 이후 다시 호출 X
