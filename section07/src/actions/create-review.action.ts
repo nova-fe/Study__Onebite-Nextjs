@@ -1,9 +1,9 @@
 "use server";
 
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidateTag } from "next/cache";
 import { delay } from "../util/delay";
 
-export async function createReviewAction(_: any, formData: FormData) {
+export async function createReviewAction(_: unknown, formData: FormData) {
   const bookId = formData.get("bookId")?.toString();
   const content = formData.get("content")?.toString(); // 값이 있을 경우 문자열 타입으로 변환(toString())
   const author = formData.get("author")?.toString();
@@ -16,7 +16,6 @@ export async function createReviewAction(_: any, formData: FormData) {
   }
 
   try {
-    await delay(2000);
     const response = await fetch(`${process.env.NEXT_PUBLIC_API_SERVER_URL}/review`, {
       method: "POST",
       body: JSON.stringify({ bookId, content, author }),

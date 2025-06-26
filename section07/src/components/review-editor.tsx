@@ -7,6 +7,7 @@ import { useActionState, useEffect } from "react";
 export default function ReviewEditor({ bookId }: { bookId: string }) {
   const [state, formAction, isPending] = useActionState(createReviewAction, null);
 
+  // 에러 처리
   useEffect(() => {
     // state가 존재하고, 값이 false라면 (요청실패)
     if (state && !state.status) {
