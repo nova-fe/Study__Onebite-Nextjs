@@ -1,7 +1,6 @@
 "use server";
 
 import { revalidateTag } from "next/cache";
-import { delay } from "../util/delay";
 
 export async function createReviewAction(_: unknown, formData: FormData) {
   const bookId = formData.get("bookId")?.toString();

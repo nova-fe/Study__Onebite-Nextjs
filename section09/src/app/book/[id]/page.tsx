@@ -10,8 +10,18 @@ import Image from "next/image";
 // generateStaticParams: 어떤 URL 파라미터가 빌드 타임에 존재할 수 있는지 직접 설정
 // 주의점 1) 파라미터 값 명시는 '문자열'로만 명시
 // 2) 데이터 캐싱이 설정되지 않은 데이터 패칭이 존재해도 스태틱 페이지로서 강제로 설정됨
-export function generateStaticParams() {
-  return [{ id: "1" }, { id: "2" }, { id: "3" }];
+export async function generateStaticParams() {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_SERVER_URL}/book`);
+  if (!response.ok) {
+    throw new Error("책 목록을 가져오는 데 실패했습니다.");
+  }
+
+  const books: BookData[] = await response.json();
+
+  // return [{ id: "1" }, { id: "2" }, { id: "3" }];
+  return books.map((book) => ({
+    id: book.id.toString(),
+  }));
 }
 
 async function BookDetail({ bookId }: { bookId: string }) {
