@@ -13,7 +13,7 @@ import BookListSkeleton from "../../components/skeleton/book-list-skeleton";
 // export const dynamic = "";
 
 async function AllBooks() {
-  await delay(1500);
+  // await delay(1500);
   // { cache: "no-store" } : 기본값(캐싱을 하지 않음)
   // { cache: "force-cache" } : 무조건 캐싱, 한번 호출 이후 다시 호출 X
   // { next: { revalidate: 3 } } : 3초마다 리빌리데이트
@@ -35,7 +35,7 @@ async function AllBooks() {
 }
 
 async function RecoBooks() {
-  await delay(3000);
+  // await delay(3000);
 
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_SERVER_URL}/book/random`, {
     // next: { revalidate: 3 },
